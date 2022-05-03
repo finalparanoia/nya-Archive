@@ -1,0 +1,17 @@
+.login-bg {
+    position: fixed;
+    z-index: -1;
+    filter: brightness(0.5);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.login-box>.card,
+.login-card-body {
+    border-radius: 12px;
+}
+
+.login-logo a {
+    color: var(--light);
+}

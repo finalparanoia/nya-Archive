@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  # nginx
+  nya-archive-web:
+    container_name: nya-archive-web
+    image: nya-archive-web
+    ports:
+      - "9889:9889"
+  # nya-archive-api
+  nya-archive-api:
+    image: nya-archive-api
+    container_name: nya-archive-api
+    volumes:
+      - ./docker/nyaarchive/conf:/app/conf
+    links:
+      - nya-archive-mongodb
+    ports:
+      - "9888:9888"
+  # mongodb
+  nya-archive-mongodb:
+    image: mongo
+    container_name: nya-archive-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./docker/nyaarchive/database:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
